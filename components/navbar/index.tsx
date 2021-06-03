@@ -1,19 +1,13 @@
 import React from "react";
 import Link from "next/link";
 
-import {
-  Container,
-  Box,
-  Stack,
-  Text,
-  Link as ChakraLink,
-} from "@chakra-ui/react";
+import { Box, Stack, Text, Link as ChakraLink } from "@chakra-ui/react";
 
 import CenterContainer from "../centerContainer";
 
 const Navbar: React.FC = () => {
   return (
-    <Box w="100%" backgroundColor="gray.50" height={20} shadow="inner">
+    <Box w="100%" backgroundColor="gray.50" height={20} shadow="md">
       <CenterContainer>
         <Stack
           direction="row"

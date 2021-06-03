@@ -33,7 +33,7 @@ const Project: React.FC = () => {
         backgroundColor="blackAlpha.700"
         color="white"
       >
-        <Heading>Title goes here</Heading>
+        <Heading textTransform="uppercase">Title goes here</Heading>
         {/* Underline */}
         <Box w={12} h="0.5" backgroundColor="white" marginTop={4}></Box>
       </Box>

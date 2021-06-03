@@ -9,10 +9,12 @@ import {
   Link as ChakraLink,
 } from "@chakra-ui/react";
 
+import CenterContainer from "../centerContainer";
+
 const Navbar: React.FC = () => {
   return (
     <Box w="100%" backgroundColor="gray.50" height={20} shadow="inner">
-      <Container maxW="container.xl" height="100%">
+      <CenterContainer>
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -37,7 +39,7 @@ const Navbar: React.FC = () => {
             </ChakraLink>
           </Stack>
         </Stack>
-      </Container>
+      </CenterContainer>
     </Box>
   );
 };

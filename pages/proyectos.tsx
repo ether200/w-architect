@@ -8,7 +8,6 @@ import CenterContainer from "../components/centerContainer";
 const Projects: React.FC = () => {
   return (
     <>
-      <Navbar />
       <CenterContainer>
         <SimpleGrid minChildWidth="400px" py={12} gap={6}>
           <Project />

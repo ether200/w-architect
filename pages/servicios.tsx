@@ -4,11 +4,11 @@ import { Box } from "@chakra-ui/react";
 import CenterContainer from "../components/centerContainer";
 import ServiceCard from "../components/serviceCard";
 import Navbar from "../components/navbar";
+import Footer from "../components/footer";
 
 const Services: React.FC = () => {
   return (
     <>
-      <Navbar />
       <Box height="100%" width="100%" py={12}>
         <CenterContainer>
           <ServiceCard imagePath="/img-5.jpg" />

@@ -1,7 +1,7 @@
 /* Slider */
 .slick-slider {
   position: relative;
-  height: 100vh;
+  height: calc(100vh - 80px);
   overflow: hidden;
 
   display: block;
@@ -163,7 +163,7 @@
 }
 
 .slick-prev {
-  left: 40px;
+  left: 5vw;
   z-index: 1;
 }
 [dir="rtl"] .slick-prev {
@@ -180,7 +180,7 @@
 /* "→" */
 
 .slick-next {
-  right: 40px;
+  right: 5vw;
   z-index: 1;
 }
 [dir="rtl"] .slick-next {

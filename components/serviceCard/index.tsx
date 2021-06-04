@@ -1,19 +1,21 @@
 import React from "react";
 import Image from "next/image";
 
-import { Stack, Box, Heading, Text } from "@chakra-ui/react";
+import { Stack, Box, Heading, Text, Icon } from "@chakra-ui/react";
+
+import { AiOutlineMail, AiOutlinePhone, AiOutlineFile } from "react-icons/ai";
 
 type Props = {
   reverse?: boolean;
   imagePath: string;
+  contact?: boolean;
 };
 
-const ServiceCard: React.FC<Props> = ({ reverse, imagePath }) => {
+const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
   return (
     <Stack
       height={700}
       width="100%"
-      // flexDirection={reverse ? "row-reverse" : "row"}
       direction={{
         base: "column-reverse",
         lg: reverse ? "row-reverse" : "row",
@@ -21,6 +23,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath }) => {
       justifyContent="center"
       alignItems="center"
     >
+      {/* Image Container */}
       <Box
         width={{ base: "100%", lg: "50%" }}
         position="relative"
@@ -28,6 +31,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath }) => {
       >
         <Image alt="image-5" src={imagePath} layout="fill" objectFit="cover" />
       </Box>
+      {/* Text Container */}
       <Stack
         width={{ base: "100%", lg: "50%" }}
         flexDirection="column"
@@ -57,6 +61,40 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath }) => {
           perspiciatis maiores sequi enim ea nisi illo! Excepturi itaque
           repudiandae possimus culpa praesentium?
         </Text>
+        {/* Contact Container */}
+        {contact && (
+          <Stack
+            direction="row"
+            width="100%"
+            justifyContent="space-between"
+            color="gray.600"
+          >
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Icon as={AiOutlineMail} height={8} width={8} />
+              <Text>ggwpdiaf@gmail.com</Text>
+            </Stack>
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Icon as={AiOutlinePhone} height={8} width={8} />
+              <Text>+5411 3333-3333</Text>
+            </Stack>
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Icon as={AiOutlineFile} height={8} width={8} />
+              <Text>Curriculum</Text>
+            </Stack>
+          </Stack>
+        )}
       </Stack>
     </Stack>
   );

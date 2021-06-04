@@ -9,7 +9,7 @@ import Footer from "../components/footer";
 const Services: React.FC = () => {
   return (
     <>
-      <Box height="100%" width="100%" py={12}>
+      <Box height="100%" width="100%" my={12}>
         <CenterContainer>
           <ServiceCard imagePath="/img-5.jpg" />
           <ServiceCard imagePath="/img-6.jpg" reverse />

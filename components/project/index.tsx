@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import { Box, Heading } from "@chakra-ui/react";
+import { Box, Text } from "@chakra-ui/react";
 
 const Project: React.FC = () => {
   const [isInside, setIsInside] = React.useState<boolean>(false);
@@ -14,9 +14,7 @@ const Project: React.FC = () => {
       onMouseEnter={() => setIsInside((state) => !state)}
       onMouseLeave={() => setIsInside((state) => !state)}
     >
-      {/* <Box w="100%" h="100%" zIndex="1" position="relative"> */}
       <Image alt="image-1" src="/img-1.jpg" layout="fill" objectFit="cover" />
-      {/* </Box> */}
       {/* Hover Modal */}
       <Box
         position="absolute"
@@ -25,7 +23,7 @@ const Project: React.FC = () => {
         alignItems="center"
         justifyContent="center"
         visibility={isInside ? "visible" : "hidden"}
-        zIndex="2"
+        zIndex="1"
         top="0"
         left="0"
         bottom="0"
@@ -33,7 +31,7 @@ const Project: React.FC = () => {
         backgroundColor="blackAlpha.700"
         color="white"
       >
-        <Heading textTransform="uppercase">Title goes here</Heading>
+        <Text textTransform="uppercase">Title goes here</Text>
         {/* Underline */}
         <Box w={12} h="0.5" backgroundColor="white" marginTop={4}></Box>
       </Box>

@@ -11,7 +11,13 @@ import CenterContainer from "../centerContainer";
 
 const Footer: React.FC = () => {
   return (
-    <Box w="100%" backgroundColor="black" height={20} shadow="md">
+    <Box
+      w="100%"
+      backgroundColor="black"
+      height={20}
+      shadow="md"
+      marginTop="auto"
+    >
       <CenterContainer>
         <Stack
           direction="row-reverse"

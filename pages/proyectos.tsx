@@ -9,7 +9,7 @@ const Projects: React.FC = () => {
   return (
     <>
       <CenterContainer>
-        <SimpleGrid minChildWidth="400px" py={12} gap={6}>
+        <SimpleGrid minChildWidth="400px" my={12} gap={6}>
           <Project />
           <Project />
           <Project />

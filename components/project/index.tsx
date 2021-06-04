@@ -9,14 +9,14 @@ const Project: React.FC = () => {
   return (
     <Box
       height="400px"
-      position="relative"
       cursor="pointer"
+      position="relative"
       onMouseEnter={() => setIsInside((state) => !state)}
       onMouseLeave={() => setIsInside((state) => !state)}
     >
-      <Box w="100%" h="100%" zIndex="1" position="relative">
-        <Image alt="image-1" src="/img-1.jpg" layout="fill" objectFit="cover" />
-      </Box>
+      {/* <Box w="100%" h="100%" zIndex="1" position="relative"> */}
+      <Image alt="image-1" src="/img-1.jpg" layout="fill" objectFit="cover" />
+      {/* </Box> */}
       {/* Hover Modal */}
       <Box
         position="absolute"

@@ -13,15 +13,23 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath }) => {
     <Stack
       height={700}
       width="100%"
-      flexDirection={reverse ? "row-reverse" : "row"}
+      // flexDirection={reverse ? "row-reverse" : "row"}
+      direction={{
+        base: "column-reverse",
+        lg: reverse ? "row-reverse" : "row",
+      }}
       justifyContent="center"
       alignItems="center"
     >
-      <Box width="50%" position="relative" height="100%">
+      <Box
+        width={{ base: "100%", lg: "50%" }}
+        position="relative"
+        height={{ base: "200%", lg: "100%" }}
+      >
         <Image alt="image-5" src={imagePath} layout="fill" objectFit="cover" />
       </Box>
       <Stack
-        width="50%"
+        width={{ base: "100%", lg: "50%" }}
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
@@ -29,12 +37,20 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath }) => {
         spacing={8}
         marginY="0 !important"
         paddingY={8}
-        paddingX={12}
+        paddingX={{ base: 8, lg: 12 }}
       >
-        <Heading alignSelf="start" textTransform="uppercase">
+        <Heading
+          alignSelf={{ base: "", lg: "start" }}
+          textTransform="uppercase"
+        >
           Service Title
         </Heading>
-        <Box w={10} h="0.5" backgroundColor="black" alignSelf="start"></Box>
+        <Box
+          w={10}
+          h="0.5"
+          backgroundColor="black"
+          alignSelf={{ base: "", lg: "start" }}
+        ></Box>
         <Text>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
           doloribus similique laborum, aut ad placeat libero aliquid

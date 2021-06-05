@@ -14,8 +14,11 @@ type Props = {
 const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
   return (
     <Stack
-      height={700}
+      height={800}
       width="100%"
+      _notLast={{
+        marginBottom: 4,
+      }}
       direction={{
         base: "column-reverse",
         lg: reverse ? "row-reverse" : "row",
@@ -27,7 +30,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
       <Box
         width={{ base: "100%", lg: "50%" }}
         position="relative"
-        height={{ base: "200%", lg: "100%" }}
+        height={{ base: "50%", lg: "100%" }}
       >
         <Image alt="image-5" src={imagePath} layout="fill" objectFit="cover" />
       </Box>
@@ -37,11 +40,12 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        height="100%"
+        height={{ base: "50%", lg: "100%" }}
         spacing={8}
-        marginY="0 !important"
         paddingY={8}
         paddingX={{ base: 8, lg: 12 }}
+        bgColor="gray.100"
+        margin="0 !important"
       >
         <Heading
           alignSelf={{ base: "", lg: "start" }}
@@ -67,6 +71,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
             direction="row"
             width="100%"
             justifyContent="space-between"
+            alignItems="center"
             color="gray.600"
           >
             <Stack

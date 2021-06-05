@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box w="100%" backgroundColor="gray.50" height={20} shadow="md">
+    <Box w="100%" backgroundColor="gray.100" height={20} shadow="md">
       <CenterContainer>
         {/* Navbar */}
         <Stack

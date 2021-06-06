@@ -7,7 +7,6 @@ import {
   Text,
   Link as ChakraLink,
   Icon,
-  Collapse,
   useDisclosure,
   Divider,
   Drawer,
@@ -18,7 +17,6 @@ import {
   DrawerHeader,
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
-import { MdClose } from "react-icons/md";
 
 import CenterContainer from "../centerContainer";
 
@@ -50,11 +48,11 @@ const Navbar: React.FC = () => {
             <ChakraLink as={Link} href="/">
               Home
             </ChakraLink>
-            <ChakraLink as={Link} href="/proyectos">
-              Proyectos
-            </ChakraLink>
             <ChakraLink as={Link} href="/servicios">
               Servicios
+            </ChakraLink>
+            <ChakraLink as={Link} href="/trabajos">
+              Trabajos
             </ChakraLink>
             <ChakraLink as={Link} href="/contacto">
               Contacto
@@ -85,11 +83,11 @@ const Navbar: React.FC = () => {
                 <ChakraLink as={Link} href="/">
                   Home
                 </ChakraLink>
-                <ChakraLink as={Link} href="/proyectos">
-                  Proyectos
-                </ChakraLink>
                 <ChakraLink as={Link} href="/servicios">
                   Servicios
+                </ChakraLink>
+                <ChakraLink as={Link} href="/trabajos">
+                  Trabajos
                 </ChakraLink>
                 <ChakraLink as={Link} href="/contacto">
                   Contacto

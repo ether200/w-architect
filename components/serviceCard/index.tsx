@@ -30,7 +30,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
       <Box
         width={{ base: "100%", lg: "50%" }}
         position="relative"
-        height={{ base: "50%", lg: "100%" }}
+        height={{ base: `${!contact ? "50%" : "30%"}`, lg: "100%" }}
       >
         <Image alt="image-5" src={imagePath} layout="fill" objectFit="cover" />
       </Box>
@@ -40,8 +40,8 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        height={{ base: "50%", lg: "100%" }}
-        spacing={8}
+        height={{ base: `${!contact ? "50%" : "70%"}`, lg: "100%" }}
+        spacing={{ base: "4", md: "8" }}
         paddingY={8}
         paddingX={{ base: 8, lg: 12 }}
         bgColor="gray.100"
@@ -59,7 +59,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
           backgroundColor="black"
           alignSelf={{ base: "", lg: "start" }}
         ></Box>
-        <Text>
+        <Text textAlign={{ base: "center", md: "left" }}>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
           doloribus similique laborum, aut ad placeat libero aliquid
           perspiciatis maiores sequi enim ea nisi illo! Excepturi itaque
@@ -68,7 +68,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
         {/* Contact Container */}
         {contact && (
           <Stack
-            direction="row"
+            direction={{ base: "column", md: "row" }}
             width="100%"
             justifyContent="space-between"
             alignItems="center"

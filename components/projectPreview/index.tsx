@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Text, Heading } from "@chakra-ui/react";
 
 const Project: React.FC = () => {
   const [isInside, setIsInside] = React.useState<boolean>(false);
@@ -33,7 +33,9 @@ const Project: React.FC = () => {
           backgroundColor="blackAlpha.700"
           color="white"
         >
-          <Text textTransform="uppercase">Title goes here</Text>
+          <Heading size="xs" textTransform="uppercase">
+            Title goes here
+          </Heading>
           {/* Underline */}
           <Box w={12} h="0.5" backgroundColor="white" marginTop={4}></Box>
         </Box>

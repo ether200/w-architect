@@ -44,6 +44,8 @@ const Navbar: React.FC = () => {
             direction="row"
             spacing={8}
             display={{ base: "none", md: "flex" }}
+            textTransform="uppercase"
+            fontSize="sm"
           >
             <ChakraLink as={Link} href="/">
               Home
@@ -77,6 +79,8 @@ const Navbar: React.FC = () => {
                 alignItems="center"
                 divider={<Divider />}
                 color="white"
+                textTransform="uppercase"
+                fontSize="sm"
               >
                 <ChakraLink as={Link} href="/">
                   Home

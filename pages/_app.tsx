@@ -1,3 +1,6 @@
+import theme from "../theme";
+import "@fontsource/raleway/600.css";
+import "@fontsource/lato/400.css";
 import "../styles/globals.css";
 import "../styles/slick.css";
 import type { AppProps } from "next/app";
@@ -11,7 +14,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { route } = useRouter();
 
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <Navbar />
       <Component {...pageProps} />
       {route !== "/" && <Footer />}

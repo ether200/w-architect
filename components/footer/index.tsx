@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Stack, Text, Link, Icon } from "@chakra-ui/react";
+import { Box, Stack, Heading, Link, Icon } from "@chakra-ui/react";
 import {
   FaFacebookSquare,
   FaInstagramSquare,
@@ -26,9 +26,11 @@ const Footer: React.FC = () => {
           height="100%"
           color="gray.600"
         >
-          <Text fontSize="2xl" fontWeight="extrabold">
-            W
-          </Text>
+          <Link href="/">
+            <Heading fontSize="lg" cursor="pointer">
+              W
+            </Heading>
+          </Link>
           <Stack direction="row" spacing={8}>
             <Link href="/" isExternal>
               <Icon as={FaFacebookSquare} w={6} h={6} />

@@ -4,7 +4,7 @@ import Link from "next/link";
 import {
   Box,
   Stack,
-  Text,
+  Heading,
   Link as ChakraLink,
   Icon,
   useDisclosure,
@@ -34,9 +34,11 @@ const Navbar: React.FC = () => {
           height="100%"
         >
           {/* Logo */}
-          <Text fontSize="2xl" fontWeight="extrabold">
-            W
-          </Text>
+          <Link href="/">
+            <Heading fontSize="lg" cursor="pointer">
+              W
+            </Heading>
+          </Link>
           {/* Navbar links */}
           <Stack
             direction="row"

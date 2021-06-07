@@ -16,9 +16,6 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
     <Stack
       height={800}
       width="100%"
-      _notLast={{
-        marginBottom: 4,
-      }}
       direction={{
         base: "column-reverse",
         lg: reverse ? "row-reverse" : "row",

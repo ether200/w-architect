@@ -14,11 +14,28 @@ import {
   Icon,
   useMediaQuery,
 } from "@chakra-ui/react";
+import { ProjectI } from "../../data/projects";
 
-type Props = {};
+type Props = {
+  project: ProjectI;
+};
 
-const ProjectGrid: React.FC<Props> = () => {
+const ProjectGrid: React.FC<Props> = ({ project }) => {
   const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
+
+  function renderImages(images: string[]) {
+    return images.map((imgSrc, i) => (
+      <GridItem
+        rowSpan={isLargerThan768 ? 4 : 2}
+        position="relative"
+        colSpan={isLargerThan768 ? 1 : 2}
+        key={imgSrc}
+        rowStart={i === 0 ? (isLargerThan768 ? 2 : 4) : undefined}
+      >
+        <Image alt={imgSrc} src={imgSrc} layout="fill" objectFit="cover" />
+      </GridItem>
+    ));
+  }
 
   return (
     <Grid
@@ -44,7 +61,7 @@ const ProjectGrid: React.FC<Props> = () => {
         backgroundColor="black"
         color="white"
       >
-        <Heading textTransform="uppercase">Project Title</Heading>
+        <Heading textTransform="uppercase">{project.titulo}</Heading>
         {/* Icons Container */}
         <Stack
           direction="row"
@@ -55,75 +72,24 @@ const ProjectGrid: React.FC<Props> = () => {
         >
           <Stack direction="column" justifyContent="center" alignItems="center">
             <Icon as={FaWaveSquare} height={6} width={6} />
-            <Text>380 m2</Text>
+            <Text>{project.m2}</Text>
           </Stack>
           <Stack direction="column" justifyContent="center" alignItems="center">
             <Icon as={GoLocation} height={6} width={6} />
-            <Text>Paso del Rey</Text>
+            <Text>{project.lugar}</Text>
           </Stack>
           <Stack direction="column" justifyContent="center" alignItems="center">
             <Icon as={MdDateRange} height={6} width={6} />
-            <Text>2016</Text>
+            <Text>{project.año}</Text>
           </Stack>
         </Stack>
         <Text marginTop={12} textAlign="center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-          doloribus similique laborum, aut ad placeat libero aliquid
-          perspiciatis maiores sequi enim ea nisi illo! Excepturi itaque
-          repudiandae possimus culpa praesentium?
+          {project.descripcion}
         </Text>
       </GridItem>
       {/* End of Description */}
-      <GridItem
-        rowSpan={isLargerThan768 ? 4 : 2}
-        position="relative"
-        rowStart={isLargerThan768 ? 2 : 4}
-        colSpan={isLargerThan768 ? 1 : 2}
-      >
-        <Image alt="image-5" src="/img-1.jpg" layout="fill" objectFit="cover" />
-      </GridItem>
-      <GridItem
-        rowSpan={isLargerThan768 ? 4 : 2}
-        position="relative"
-        colSpan={isLargerThan768 ? 1 : 2}
-      >
-        <Image alt="image-5" src="/img-2.jpg" layout="fill" objectFit="cover" />
-      </GridItem>
-      <GridItem
-        rowSpan={isLargerThan768 ? 4 : 2}
-        position="relative"
-        colSpan={isLargerThan768 ? 1 : 2}
-      >
-        <Image alt="image-5" src="/img-3.jpg" layout="fill" objectFit="cover" />
-      </GridItem>
-      <GridItem
-        rowSpan={isLargerThan768 ? 4 : 2}
-        position="relative"
-        colSpan={isLargerThan768 ? 1 : 2}
-      >
-        <Image alt="image-5" src="/img-4.jpg" layout="fill" objectFit="cover" />
-      </GridItem>
-      <GridItem
-        rowSpan={isLargerThan768 ? 4 : 2}
-        position="relative"
-        colSpan={isLargerThan768 ? 1 : 2}
-      >
-        <Image alt="image-5" src="/img-5.jpg" layout="fill" objectFit="cover" />
-      </GridItem>
-      <GridItem
-        rowSpan={isLargerThan768 ? 4 : 2}
-        position="relative"
-        colSpan={isLargerThan768 ? 1 : 2}
-      >
-        <Image alt="image-5" src="/img-6.jpg" layout="fill" objectFit="cover" />
-      </GridItem>
-      <GridItem
-        rowSpan={isLargerThan768 ? 4 : 2}
-        position="relative"
-        colSpan={isLargerThan768 ? 1 : 2}
-      >
-        <Image alt="image-5" src="/img-7.jpg" layout="fill" objectFit="cover" />
-      </GridItem>
+
+      {renderImages(project.imagenes)}
     </Grid>
   );
 };

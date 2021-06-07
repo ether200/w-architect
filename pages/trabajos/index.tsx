@@ -15,6 +15,7 @@ const Projects: React.FC = () => {
             <ProjectPreview
               imgSrc={dummyProject.poster}
               titulo={dummyProject.titulo}
+              slug={dummyProject.slug}
               key={dummyProject.titulo}
             />
           ))}

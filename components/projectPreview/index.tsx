@@ -7,13 +7,14 @@ import { Box, Heading } from "@chakra-ui/react";
 type Props = {
   imgSrc: string;
   titulo: string;
+  slug: string;
 };
 
-const ProjectPreview: React.FC<Props> = ({ imgSrc, titulo }) => {
+const ProjectPreview: React.FC<Props> = ({ imgSrc, titulo, slug }) => {
   const [isInside, setIsInside] = React.useState<boolean>(false);
 
   return (
-    <Link href="/proyecto">
+    <Link href={`/trabajos/${slug}`}>
       <Box
         height="400px"
         cursor="pointer"

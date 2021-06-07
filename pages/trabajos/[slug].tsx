@@ -1,33 +1,20 @@
 import React from "react";
-import Image from "next/image";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { dummyProjects } from "../../data/projects";
+import { dummyProjects, ProjectI } from "../../data/projects";
 
-import {
-  Box,
-  Grid,
-  Heading,
-  Text,
-  GridItem,
-  Stack,
-  Icon,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import CenterContainer from "../../components/centerContainer";
-
-import { GoLocation } from "react-icons/go";
-import { MdDateRange } from "react-icons/md";
-import { FaWaveSquare } from "react-icons/fa";
-
 import ProjectGrid from "../../components/projectView/ProjectGrid";
 
-const Proyecto = () => {
-  const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
+type Props = {
+  project: ProjectI;
+};
 
+const Proyecto: React.FC<Props> = ({ project }) => {
   return (
     <Box height="100%" width="100%" my={4}>
       <CenterContainer>
-        <ProjectGrid />
+        <ProjectGrid project={project} />
       </CenterContainer>
     </Box>
   );
@@ -38,17 +25,19 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: dummyProjects.map((dummyProject) => ({
       params: { slug: dummyProject.slug },
     })),
-    fallback: true,
+    fallback: false,
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const project = dummyProjects.filter(
+  const filteredProject = dummyProjects.filter(
     (dummyProject) => dummyProject.slug === params?.slug
   );
   return {
     props: {
-      project,
+      project: filteredProject[0],
     },
   };
 };
+
+export default Proyecto;

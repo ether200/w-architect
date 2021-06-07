@@ -2,7 +2,6 @@ import Head from "next/head";
 import Image from "next/image";
 import { Box } from "@chakra-ui/react";
 import Slider from "react-slick";
-import Navbar from "../components/navbar";
 
 export default function Home() {
   const settings = {
@@ -29,6 +28,7 @@ export default function Home() {
             src="/img-1.jpg"
             layout="fill"
             objectFit="cover"
+            priority={true}
           />
         </Box>
         <Box w="100vw" h="100vh" position="relative">
@@ -37,6 +37,7 @@ export default function Home() {
             src="/img-2.jpg"
             layout="fill"
             objectFit="cover"
+            priority={true}
           />
         </Box>
         <Box w="100vw" h="100vh" position="relative">
@@ -45,6 +46,7 @@ export default function Home() {
             src="/img-3.jpg"
             layout="fill"
             objectFit="cover"
+            priority={true}
           />
         </Box>
         <Box w="100vw" h="100vh" position="relative">
@@ -53,6 +55,7 @@ export default function Home() {
             src="/img-4.jpg"
             layout="fill"
             objectFit="cover"
+            priority={true}
           />
         </Box>
       </Slider>

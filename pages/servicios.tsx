@@ -4,10 +4,20 @@ import { Box } from "@chakra-ui/react";
 import CenterContainer from "../components/centerContainer";
 import ServiceCard from "../components/serviceCard";
 
+import { motion } from "framer-motion";
+
 const Services: React.FC = () => {
   return (
     <>
-      <Box height="100%" width="100%" my={4}>
+      <Box
+        height="100%"
+        width="100%"
+        my={4}
+        as={motion.div}
+        exit={{ opacity: 0 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
         <CenterContainer>
           <ServiceCard imagePath="/img-5.jpg" />
           <ServiceCard imagePath="/img-6.jpg" reverse />

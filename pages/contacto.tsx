@@ -4,9 +4,19 @@ import { Box } from "@chakra-ui/react";
 import CenterContainer from "../components/centerContainer";
 import ServiceCard from "../components/serviceCard";
 
+import { motion } from "framer-motion";
+
 const Contact: React.FC = () => {
   return (
-    <Box width="100%" height="100%" my={4}>
+    <Box
+      width="100%"
+      height="100%"
+      my={4}
+      as={motion.div}
+      exit={{ opacity: 0 }}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <CenterContainer>
         <ServiceCard imagePath="/img-5.jpg" contact />
       </CenterContainer>

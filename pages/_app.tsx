@@ -10,13 +10,17 @@ import { ChakraProvider } from "@chakra-ui/react";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 
+import { AnimatePresence } from "framer-motion";
+
 function MyApp({ Component, pageProps }: AppProps) {
   const { route } = useRouter();
 
   return (
     <ChakraProvider theme={theme}>
       <Navbar />
-      <Component {...pageProps} />
+      <AnimatePresence exitBeforeEnter>
+        <Component {...pageProps} />
+      </AnimatePresence>
       {route !== "/" && <Footer />}
     </ChakraProvider>
   );

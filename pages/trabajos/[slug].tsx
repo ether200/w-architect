@@ -6,13 +6,22 @@ import { Box } from "@chakra-ui/react";
 import CenterContainer from "../../components/centerContainer";
 import ProjectGrid from "../../components/projectView/ProjectGrid";
 
+import { motion } from "framer-motion";
+
 type Props = {
   project: ProjectI;
 };
 
 const Proyecto: React.FC<Props> = ({ project }) => {
   return (
-    <Box height="100%" width="100%" my={4}>
+    <Box
+      height="100%"
+      width="100%"
+      my={4}
+      as={motion.div}
+      initial="initial"
+      animate="animate"
+    >
       <CenterContainer>
         <ProjectGrid project={project} />
       </CenterContainer>

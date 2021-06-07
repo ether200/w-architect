@@ -7,6 +7,14 @@ import CenterContainer from "../../components/centerContainer";
 import { dummyProjects } from "../../data/projects";
 import { motion } from "framer-motion";
 
+const stagger = {
+  animate: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
 const Projects: React.FC = () => {
   return (
     <Box
@@ -15,11 +23,16 @@ const Projects: React.FC = () => {
       my={4}
       as={motion.div}
       exit={{ opacity: 0 }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial="initial"
+      animate="animate"
     >
       <CenterContainer>
-        <SimpleGrid minChildWidth="325px" gap={4}>
+        <SimpleGrid
+          minChildWidth="325px"
+          gap={4}
+          as={motion.div}
+          variants={stagger}
+        >
           {dummyProjects.map((dummyProject) => (
             <ProjectPreview
               imgSrc={dummyProject.poster}

@@ -6,14 +6,7 @@ import CenterContainer from "../../components/centerContainer";
 
 import { dummyProjects } from "../../data/projects";
 import { motion } from "framer-motion";
-
-const stagger = {
-  animate: {
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-};
+import { stagger } from "../../animation";
 
 const Projects: React.FC = () => {
   return (

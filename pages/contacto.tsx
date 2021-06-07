@@ -14,8 +14,8 @@ const Contact: React.FC = () => {
       my={4}
       as={motion.div}
       exit={{ opacity: 0 }}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial="initial"
+      animate="animate"
     >
       <CenterContainer>
         <ServiceCard imagePath="/img-5.jpg" contact />

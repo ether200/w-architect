@@ -4,26 +4,12 @@ import Link from "next/link";
 
 import { Box, Heading } from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { fadeInUp } from "../../animation";
 
 type Props = {
   imgSrc: string;
   titulo: string;
   slug: string;
-};
-
-const fadeInUp = {
-  initial: {
-    y: 60,
-    opacity: 0,
-  },
-  animate: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-      ease: [0.6, -0.5, 0.01, 0.99],
-    },
-  },
 };
 
 const ProjectPreview: React.FC<Props> = ({ imgSrc, titulo, slug }) => {

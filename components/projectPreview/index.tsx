@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { Box, Heading } from "@chakra-ui/react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { fadeInUp } from "../../animation";
 
 type Props = {
@@ -13,7 +13,7 @@ type Props = {
 };
 
 const ProjectPreview: React.FC<Props> = ({ imgSrc, titulo, slug }) => {
-  const [isInside, setIsInside] = React.useState<boolean>(false);
+  const controls = useAnimation();
 
   return (
     <Link href={`/trabajos/${slug}`}>
@@ -21,8 +21,8 @@ const ProjectPreview: React.FC<Props> = ({ imgSrc, titulo, slug }) => {
         height="400px"
         cursor="pointer"
         position="relative"
-        onMouseEnter={() => setIsInside((state) => !state)}
-        onMouseLeave={() => setIsInside((state) => !state)}
+        onMouseEnter={() => controls.start("visible")}
+        onMouseLeave={() => controls.start("hidden")}
         as={motion.div}
         variants={fadeInUp}
       >
@@ -34,7 +34,7 @@ const ProjectPreview: React.FC<Props> = ({ imgSrc, titulo, slug }) => {
           flexDirection="column"
           alignItems="center"
           justifyContent="center"
-          visibility={isInside ? "visible" : "hidden"}
+          initial="hidden"
           zIndex="1"
           top="0"
           left="0"
@@ -42,12 +42,35 @@ const ProjectPreview: React.FC<Props> = ({ imgSrc, titulo, slug }) => {
           right="0"
           backgroundColor="blackAlpha.700"
           color="white"
+          animate={controls}
+          variants={{ visible: { opacity: 1 }, hidden: { opacity: 0 } }}
+          as={motion.div}
         >
-          <Heading size="xs" textTransform="uppercase">
+          <Heading
+            size="xs"
+            textTransform="uppercase"
+            as={motion.h2}
+            variants={{
+              visible: { y: 0, opacity: 1 },
+              hidden: { y: 60, opacity: 1 },
+            }}
+            animate={controls}
+          >
             {titulo}
           </Heading>
           {/* Underline */}
-          <Box w={12} h="0.5" backgroundColor="white" marginTop={4}></Box>
+          <Box
+            w={12}
+            h="0.5"
+            backgroundColor="white"
+            marginTop={4}
+            as={motion.div}
+            variants={{
+              visible: { y: 0, opacity: 1 },
+              hidden: { y: 60, opacity: 1 },
+            }}
+            animate={controls}
+          ></Box>
         </Box>
       </Box>
     </Link>

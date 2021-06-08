@@ -57,44 +57,74 @@ const ProjectGrid: React.FC<Props> = ({ project }) => {
         rowSpan={3}
         colSpan={isLargerThan768 ? 1 : 2}
         colStart={isLargerThan768 ? 2 : 1}
-        bgColor="white"
-        display="flex"
-        flexDirection="column"
-        alignItems="center"
-        justifyContent="center"
-        height="100%"
-        width="100%"
         p={4}
         backgroundColor="black"
         color="white"
         as={motion.div}
         variants={fadeInUp}
       >
-        <Heading textTransform="uppercase">{project.titulo}</Heading>
-        {/* Icons Container */}
         <Stack
-          direction="row"
-          width="100%"
-          justifyContent="space-around"
+          direction="column"
           alignItems="center"
-          marginTop={12}
+          justifyContent="center"
+          height="100%"
+          width="100%"
+          as={motion.div}
+          variants={stagger}
+          spacing={8}
         >
-          <Stack direction="column" justifyContent="center" alignItems="center">
-            <Icon as={FaWaveSquare} height={6} width={6} />
-            <Text>{project.m2}</Text>
+          <Heading textTransform="uppercase" as={motion.h2} variants={fadeInUp}>
+            {project.titulo}
+          </Heading>
+          {/* Icons Container */}
+          <Stack
+            direction="row"
+            width="100%"
+            justifyContent="space-around"
+            alignItems="center"
+            as={motion.div}
+            variants={stagger}
+          >
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              as={motion.div}
+              variants={fadeInUp}
+            >
+              <Icon as={FaWaveSquare} height={6} width={6} />
+              <Text>{project.m2}</Text>
+            </Stack>
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              as={motion.div}
+              variants={fadeInUp}
+            >
+              <Icon as={GoLocation} height={6} width={6} />
+              <Text>{project.lugar}</Text>
+            </Stack>
+            <Stack
+              direction="column"
+              justifyContent="center"
+              alignItems="center"
+              as={motion.div}
+              variants={fadeInUp}
+            >
+              <Icon as={MdDateRange} height={6} width={6} />
+              <Text>{project.año}</Text>
+            </Stack>
           </Stack>
-          <Stack direction="column" justifyContent="center" alignItems="center">
-            <Icon as={GoLocation} height={6} width={6} />
-            <Text>{project.lugar}</Text>
-          </Stack>
-          <Stack direction="column" justifyContent="center" alignItems="center">
-            <Icon as={MdDateRange} height={6} width={6} />
-            <Text>{project.año}</Text>
-          </Stack>
+          <Text
+            marginTop={12}
+            textAlign="center"
+            as={motion.p}
+            variants={fadeInUp}
+          >
+            {project.descripcion}
+          </Text>
         </Stack>
-        <Text marginTop={12} textAlign="center">
-          {project.descripcion}
-        </Text>
       </GridItem>
       {/* End of Description */}
 

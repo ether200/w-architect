@@ -24,7 +24,7 @@ const Navbar: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box w="100%" backgroundColor="gray.100" height={20} shadow="md">
+    <Box w="100%" height={20} shadow="md">
       <CenterContainer>
         {/* Navbar */}
         <Stack
@@ -42,10 +42,11 @@ const Navbar: React.FC = () => {
           {/* Navbar links */}
           <Stack
             direction="row"
-            spacing={8}
+            spacing={12}
             display={{ base: "none", md: "flex" }}
-            textTransform="uppercase"
-            fontSize="sm"
+            textTransform="capitalize"
+            fontSize="md"
+            color="gray.500"
           >
             <ChakraLink as={Link} href="/">
               Home

@@ -25,6 +25,9 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
       }}
       justifyContent="center"
       alignItems="center"
+      _notLast={{
+        marginBottom: 4,
+      }}
       as={motion.div}
       initial={{ scale: 0.95, opacity: 0 }}
       animate={{
@@ -97,7 +100,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
             width="100%"
             justifyContent="space-between"
             alignItems="center"
-            color="gray.600"
+            color="gray.500"
             as={motion.div}
             variants={stagger}
           >

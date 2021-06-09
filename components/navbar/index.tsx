@@ -8,17 +8,11 @@ import {
   Link as ChakraLink,
   Icon,
   useDisclosure,
-  Divider,
-  Drawer,
-  DrawerOverlay,
-  DrawerContent,
-  DrawerCloseButton,
-  DrawerBody,
-  DrawerHeader,
 } from "@chakra-ui/react";
 import { FiMenu } from "react-icons/fi";
 
 import CenterContainer from "../centerContainer";
+import NavigationDrawer from "./NavigationDrawer";
 
 const Navbar: React.FC = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -66,39 +60,8 @@ const Navbar: React.FC = () => {
             <Icon as={FiMenu} h={6} w={6} onClick={onOpen} cursor="pointer" />
           </Stack>
         </Stack>
-        <Drawer isOpen={isOpen} placement="top" onClose={onClose}>
-          <DrawerOverlay />
-          <DrawerContent bgColor="black">
-            <DrawerHeader>
-              <DrawerCloseButton color="white" />
-            </DrawerHeader>
-            <DrawerBody>
-              <Stack
-                direction="column"
-                spacing={4}
-                padding={4}
-                alignItems="center"
-                divider={<Divider />}
-                color="white"
-                textTransform="uppercase"
-                fontSize="sm"
-              >
-                <ChakraLink as={Link} href="/">
-                  Home
-                </ChakraLink>
-                <ChakraLink as={Link} href="/servicios">
-                  Servicios
-                </ChakraLink>
-                <ChakraLink as={Link} href="/trabajos">
-                  Trabajos
-                </ChakraLink>
-                <ChakraLink as={Link} href="/contacto">
-                  Contacto
-                </ChakraLink>
-              </Stack>
-            </DrawerBody>
-          </DrawerContent>
-        </Drawer>
+        {/* Drawer */}
+        <NavigationDrawer isOpen={isOpen} onClose={onClose} />
       </CenterContainer>
     </Box>
   );

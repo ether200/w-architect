@@ -59,7 +59,7 @@ const ProjectGrid: React.FC<Props> = ({ project }) => {
         colStart={isLargerThan768 ? 2 : 1}
         p={4}
         backgroundColor="black"
-        color="white"
+        color="gray.100"
         as={motion.div}
         variants={fadeInUp}
       >

@@ -40,13 +40,15 @@ const NavigationDrawer: React.FC<Props> = ({ isOpen, onClose }) => {
             padding={4}
             alignItems="center"
             divider={<Divider />}
-            textTransform="capitalize"
           >
             <Button
               variant="link"
               onClick={() => handleNavigation("/")}
               color="white"
-              fontWeight="normal"
+              textTransform="uppercase"
+              fontSize="xs"
+              letterSpacing={1}
+              fontWeight="bold"
             >
               Home
             </Button>
@@ -54,7 +56,10 @@ const NavigationDrawer: React.FC<Props> = ({ isOpen, onClose }) => {
               variant="link"
               onClick={() => handleNavigation("/servicios")}
               color="white"
-              fontWeight="normal"
+              textTransform="uppercase"
+              fontSize="xs"
+              letterSpacing={1}
+              fontWeight="bold"
             >
               Servicios
             </Button>
@@ -62,7 +67,10 @@ const NavigationDrawer: React.FC<Props> = ({ isOpen, onClose }) => {
               variant="link"
               onClick={() => handleNavigation("/trabajos")}
               color="white"
-              fontWeight="normal"
+              textTransform="uppercase"
+              fontSize="xs"
+              letterSpacing={1}
+              fontWeight="bold"
             >
               Trabajos
             </Button>
@@ -70,7 +78,10 @@ const NavigationDrawer: React.FC<Props> = ({ isOpen, onClose }) => {
               variant="link"
               onClick={() => handleNavigation("/contacto")}
               color="white"
-              fontWeight="normal"
+              textTransform="uppercase"
+              fontSize="xs"
+              letterSpacing={1}
+              fontWeight="bold"
             >
               Contacto
             </Button>

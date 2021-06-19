@@ -72,13 +72,14 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
           textTransform="uppercase"
           as={motion.h2}
           variants={fadeInUp}
+          color="gray.900"
         >
           Service Title
         </Heading>
         <Box
           w={10}
           h="0.5"
-          backgroundColor="black"
+          backgroundColor="gray.900"
           alignSelf={{ base: "", lg: "start" }}
           as={motion.div}
           variants={fadeInUp}
@@ -87,6 +88,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
           textAlign={{ base: "center", md: "left" }}
           as={motion.p}
           variants={fadeInUp}
+          color="gray.900"
         >
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
           doloribus similique laborum, aut ad placeat libero aliquid
@@ -100,7 +102,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
             width="100%"
             justifyContent="space-between"
             alignItems="center"
-            color="gray.500"
+            color="gray.600"
             as={motion.div}
             variants={stagger}
           >

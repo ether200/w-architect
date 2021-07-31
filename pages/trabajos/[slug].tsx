@@ -1,4 +1,6 @@
 import React from "react";
+import { gql, useQuery } from "@apollo/client";
+import client from "../../apollo-client";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { dummyProjects, ProjectI } from "../../data/projects";
 
@@ -9,10 +11,10 @@ import ProjectGrid from "../../components/projectView/ProjectGrid";
 import { motion } from "framer-motion";
 
 type Props = {
-  project: ProjectI;
+  trabajo: any;
 };
 
-const Proyecto: React.FC<Props> = ({ project }) => {
+const Proyecto: React.FC<Props> = ({ trabajo }) => {
   return (
     <Box
       height="100%"
@@ -23,29 +25,61 @@ const Proyecto: React.FC<Props> = ({ project }) => {
       animate="animate"
     >
       <CenterContainer>
-        <ProjectGrid project={project} />
+        <ProjectGrid project={trabajo} />
+        <h1>Dolar</h1>
       </CenterContainer>
     </Box>
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  console.log(params?.slug);
+
+  const {
+    data: { trabajos },
+  } = await client.query({
+    query: gql`
+      query getTrabajo($slug: String!) {
+        trabajos(where: { Slug: $slug }) {
+          Titulo
+          Descripcion
+          Ciudad
+          M2
+          Year
+          Imagenes {
+            url
+          }
+        }
+      }
+    `,
+    variables: { slug: params?.slug },
+  });
+
   return {
-    paths: dummyProjects.map((dummyProject) => ({
-      params: { slug: dummyProject.slug },
-    })),
-    fallback: false,
+    props: {
+      trabajo: trabajos[0],
+    },
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const filteredProject = dummyProjects.filter(
-    (dummyProject) => dummyProject.slug === params?.slug
-  );
+export const getStaticPaths: GetStaticPaths = async () => {
+  const {
+    data: { trabajos },
+  } = await client.query({
+    query: gql`
+      query getWorks {
+        trabajos {
+          Slug
+        }
+      }
+    `,
+  });
+
   return {
-    props: {
-      project: filteredProject[0],
-    },
+    paths: trabajos.map((trabajo: any) => ({
+      params: { slug: trabajo.Slug },
+    })),
+    fallback: false,
   };
 };
 

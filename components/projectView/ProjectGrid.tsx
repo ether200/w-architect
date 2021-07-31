@@ -14,10 +14,23 @@ import {
   Icon,
   useMediaQuery,
 } from "@chakra-ui/react";
-import { ProjectI } from "../../data/projects";
+// import { ProjectI } from "../../data/projects";
 
 import { motion } from "framer-motion";
 import { stagger, fadeInUp } from "../../animation";
+
+type Imagenes = {
+  url: string;
+};
+
+interface ProjectI {
+  Ciudad: string;
+  Descripcion: String;
+  Imagenes: Imagenes[];
+  Titulo: String;
+  Year: String;
+  M2: String;
+}
 
 type Props = {
   project: ProjectI;
@@ -26,18 +39,23 @@ type Props = {
 const ProjectGrid: React.FC<Props> = ({ project }) => {
   const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
 
-  function renderImages(images: string[]) {
+  function renderImages(images: Imagenes[]) {
     return images.map((imgSrc, i) => (
       <GridItem
         rowSpan={isLargerThan768 ? 4 : 2}
         position="relative"
         colSpan={isLargerThan768 ? 1 : 2}
-        key={imgSrc}
+        key={imgSrc.url}
         rowStart={i === 0 ? (isLargerThan768 ? 2 : 4) : undefined}
         as={motion.div}
         variants={fadeInUp}
       >
-        <Image alt={imgSrc} src={imgSrc} layout="fill" objectFit="cover" />
+        <Image
+          alt={imgSrc.url}
+          src={imgSrc.url}
+          layout="fill"
+          objectFit="cover"
+        />
       </GridItem>
     ));
   }
@@ -74,7 +92,7 @@ const ProjectGrid: React.FC<Props> = ({ project }) => {
           spacing={8}
         >
           <Heading textTransform="uppercase" as={motion.h2} variants={fadeInUp}>
-            {project.titulo}
+            {project.Titulo}
           </Heading>
           {/* Icons Container */}
           <Stack
@@ -93,7 +111,7 @@ const ProjectGrid: React.FC<Props> = ({ project }) => {
               variants={fadeInUp}
             >
               <Icon as={FaWaveSquare} height={6} width={6} />
-              <Text>{project.m2}</Text>
+              <Text>{project.M2}</Text>
             </Stack>
             <Stack
               direction="column"
@@ -103,7 +121,7 @@ const ProjectGrid: React.FC<Props> = ({ project }) => {
               variants={fadeInUp}
             >
               <Icon as={GoLocation} height={6} width={6} />
-              <Text>{project.lugar}</Text>
+              <Text>{project.Ciudad}</Text>
             </Stack>
             <Stack
               direction="column"
@@ -113,7 +131,7 @@ const ProjectGrid: React.FC<Props> = ({ project }) => {
               variants={fadeInUp}
             >
               <Icon as={MdDateRange} height={6} width={6} />
-              <Text>{project.año}</Text>
+              <Text>{project.Year}</Text>
             </Stack>
           </Stack>
           <Text
@@ -122,13 +140,13 @@ const ProjectGrid: React.FC<Props> = ({ project }) => {
             as={motion.p}
             variants={fadeInUp}
           >
-            {project.descripcion}
+            {project.Descripcion}
           </Text>
         </Stack>
       </GridItem>
       {/* End of Description */}
 
-      {renderImages(project.imagenes)}
+      {renderImages(project.Imagenes)}
     </Grid>
   );
 };

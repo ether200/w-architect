@@ -1,7 +1,14 @@
 import React from "react";
 import Image from "next/image";
 
-import { Stack, Box, Heading, Text, Icon } from "@chakra-ui/react";
+import {
+  Stack,
+  Box,
+  Heading,
+  Text,
+  Icon,
+  Link as ChakraLink,
+} from "@chakra-ui/react";
 
 import { AiOutlineMail, AiOutlinePhone, AiOutlineFile } from "react-icons/ai";
 
@@ -9,12 +16,24 @@ import { motion } from "framer-motion";
 import { fadeInUp, stagger } from "../../animation";
 
 type Props = {
-  reverse?: boolean;
+  reverse?: boolean | null;
   imagePath: string;
-  contact?: boolean;
+  contact?: {
+    Email: string;
+    Telefono: string;
+    Curriculum: string;
+  };
+  description: string;
+  title: string;
 };
 
-const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
+const ServiceCard: React.FC<Props> = ({
+  reverse,
+  imagePath,
+  contact,
+  description,
+  title,
+}) => {
   return (
     <Stack
       height={800}
@@ -74,7 +93,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
           variants={fadeInUp}
           color="gray.900"
         >
-          Service Title
+          {title}
         </Heading>
         <Box
           w={10}
@@ -90,10 +109,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
           variants={fadeInUp}
           color="gray.900"
         >
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi
-          doloribus similique laborum, aut ad placeat libero aliquid
-          perspiciatis maiores sequi enim ea nisi illo! Excepturi itaque
-          repudiandae possimus culpa praesentium?
+          {description}
         </Text>
         {/* Contact Container */}
         {contact && (
@@ -114,7 +130,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
               variants={fadeInUp}
             >
               <Icon as={AiOutlineMail} height={8} width={8} />
-              <Text>ggwpdiaf@gmail.com</Text>
+              <Text>{contact.Email}</Text>
             </Stack>
             <Stack
               direction="column"
@@ -124,7 +140,7 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
               variants={fadeInUp}
             >
               <Icon as={AiOutlinePhone} height={8} width={8} />
-              <Text>+5411 3333-3333</Text>
+              <Text>{contact.Telefono}</Text>
             </Stack>
             <Stack
               direction="column"
@@ -134,7 +150,11 @@ const ServiceCard: React.FC<Props> = ({ reverse, imagePath, contact }) => {
               variants={fadeInUp}
             >
               <Icon as={AiOutlineFile} height={8} width={8} />
-              <Text>Curriculum</Text>
+              <Text>
+                <ChakraLink href={contact.Curriculum} isExternal>
+                  Curriculum
+                </ChakraLink>
+              </Text>
             </Stack>
           </Stack>
         )}

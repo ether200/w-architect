@@ -1,4 +1,6 @@
 import React from "react";
+import { gql } from "@apollo/client";
+import client from "../apollo-client";
 
 import { Box } from "@chakra-ui/react";
 import CenterContainer from "../components/centerContainer";
@@ -6,7 +8,22 @@ import ServiceCard from "../components/serviceCard";
 
 import { motion } from "framer-motion";
 
-const Services: React.FC = () => {
+export interface ServiceInterface {
+  Descripcion: string;
+  Imagen: {
+    url: string;
+  };
+  Titulo: string;
+  id: string;
+}
+
+type Props = {
+  services: ServiceInterface[];
+};
+
+const Services: React.FC<Props> = ({ services }) => {
+  console.log(services);
+
   return (
     <>
       <Box
@@ -19,13 +36,42 @@ const Services: React.FC = () => {
         animate="animate"
       >
         <CenterContainer>
-          <ServiceCard imagePath="/img-5.jpg" />
-          <ServiceCard imagePath="/img-6.jpg" reverse />
-          <ServiceCard imagePath="/img-7.jpg" />
+          {services.map((service, index) => (
+            <ServiceCard
+              key={service.id}
+              description={service.Descripcion}
+              imagePath={service.Imagen.url}
+              title={service.Titulo}
+              reverse={+index % 2 === 0 ? true : null}
+            />
+          ))}
         </CenterContainer>
       </Box>
     </>
   );
 };
+
+export async function getStaticProps() {
+  const { data } = await client.query({
+    query: gql`
+      query getServices {
+        servicios {
+          id
+          Titulo
+          Imagen {
+            url
+          }
+          Descripcion
+        }
+      }
+    `,
+  });
+
+  return {
+    props: {
+      services: data.servicios,
+    },
+  };
+}
 
 export default Services;

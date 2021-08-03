@@ -1,5 +1,5 @@
 import React from "react";
-import { gql } from "@apollo/client";
+import { GET_SERVICES_INFO, ServiceInfoData } from "../lib/index";
 import client from "../apollo-client";
 
 import { Box } from "@chakra-ui/react";
@@ -8,22 +8,7 @@ import ServiceCard from "../components/serviceCard";
 
 import { motion } from "framer-motion";
 
-export interface ServiceInterface {
-  Descripcion: string;
-  Imagen: {
-    url: string;
-  };
-  Titulo: string;
-  id: string;
-}
-
-type Props = {
-  services: ServiceInterface[];
-};
-
-const Services: React.FC<Props> = ({ services }) => {
-  console.log(services);
-
+const Services: React.FC<ServiceInfoData> = ({ servicios }) => {
   return (
     <>
       <Box
@@ -36,7 +21,7 @@ const Services: React.FC<Props> = ({ services }) => {
         animate="animate"
       >
         <CenterContainer>
-          {services.map((service, index) => (
+          {servicios.map((service, index) => (
             <ServiceCard
               key={service.id}
               description={service.Descripcion}
@@ -52,24 +37,13 @@ const Services: React.FC<Props> = ({ services }) => {
 };
 
 export async function getStaticProps() {
-  const { data } = await client.query({
-    query: gql`
-      query getServices {
-        servicios {
-          id
-          Titulo
-          Imagen {
-            url
-          }
-          Descripcion
-        }
-      }
-    `,
+  const { data } = await client.query<ServiceInfoData>({
+    query: GET_SERVICES_INFO,
   });
 
   return {
     props: {
-      services: data.servicios,
+      servicios: data.servicios,
     },
   };
 }

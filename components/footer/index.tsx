@@ -27,18 +27,22 @@ const Footer: React.FC = () => {
           color="gray.600"
         >
           <Link href="/">
-            <Heading fontSize="lg" cursor="pointer">
-              W
+            <Heading
+              fontSize="2xl"
+              fontFamily="Dancing Script"
+              cursor="pointer"
+            >
+              Wal
             </Heading>
           </Link>
           <Stack direction="row" spacing={8}>
-            <Link href="/" isExternal>
+            <Link href="https://www.facebook.com/" isExternal>
               <Icon as={FaFacebookSquare} w={6} h={6} />
             </Link>
-            <Link href="/" isExternal>
+            <Link href="https://www.instagram.com/" isExternal>
               <Icon as={FaInstagramSquare} w={6} h={6} />
             </Link>
-            <Link href="/" isExternal>
+            <Link href="https://www.linkedin.com/" isExternal>
               <Icon as={FaLinkedin} w={6} h={6} />
             </Link>
           </Stack>

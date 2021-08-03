@@ -48,8 +48,12 @@ const Navbar: React.FC = () => {
         >
           {/* Logo */}
           <Link href="/">
-            <Heading fontSize="lg" cursor="pointer">
-              W
+            <Heading
+              fontSize="2xl"
+              fontFamily="Dancing Script"
+              cursor="pointer"
+            >
+              Wal
             </Heading>
           </Link>
           {/* Navbar links */}

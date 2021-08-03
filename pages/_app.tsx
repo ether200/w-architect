@@ -1,6 +1,7 @@
 import theme from "../theme";
 import "@fontsource/raleway/600.css";
 import "@fontsource/lato/400.css";
+import "@fontsource/dancing-script/700.css";
 import "../styles/globals.css";
 import "../styles/slick.css";
 import type { AppProps } from "next/app";

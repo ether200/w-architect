@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { SingleWorkInfo, WorkImages } from "../../lib";
 
 import { GoLocation } from "react-icons/go";
 import { MdDateRange } from "react-icons/md";
@@ -14,32 +15,18 @@ import {
   Icon,
   useMediaQuery,
 } from "@chakra-ui/react";
-// import { ProjectI } from "../../data/projects";
 
 import { motion } from "framer-motion";
 import { stagger, fadeInUp } from "../../animation";
 
-type Imagenes = {
-  url: string;
-};
-
-interface ProjectI {
-  Ciudad: string;
-  Descripcion: String;
-  Imagenes: Imagenes[];
-  Titulo: String;
-  Year: String;
-  M2: String;
-}
-
 type Props = {
-  project: ProjectI;
+  project: SingleWorkInfo;
 };
 
 const ProjectGrid: React.FC<Props> = ({ project }) => {
   const [isLargerThan768] = useMediaQuery("(min-width: 768px)");
 
-  function renderImages(images: Imagenes[]) {
+  function renderImages(images: WorkImages[]) {
     return images.map((imgSrc, i) => (
       <GridItem
         rowSpan={isLargerThan768 ? 4 : 2}

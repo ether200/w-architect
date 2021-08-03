@@ -1,9 +1,12 @@
 import React from "react";
-import { gql, useQuery } from "@apollo/client";
+import {
+  GET_SINGLEWORK,
+  GET_SINGLEWORK_SLUG,
+  SingleWorkInfo,
+  SingleWorkInfoData,
+} from "../../lib";
 import client from "../../apollo-client";
-import { GetStaticPaths, GetStaticProps } from "next";
-import { dummyProjects, ProjectI } from "../../data/projects";
-
+import { GetStaticProps } from "next";
 import { Box } from "@chakra-ui/react";
 import CenterContainer from "../../components/centerContainer";
 import ProjectGrid from "../../components/projectView/ProjectGrid";
@@ -11,7 +14,7 @@ import ProjectGrid from "../../components/projectView/ProjectGrid";
 import { motion } from "framer-motion";
 
 type Props = {
-  trabajo: any;
+  trabajo: SingleWorkInfo;
 };
 
 const Proyecto: React.FC<Props> = ({ trabajo }) => {
@@ -26,32 +29,16 @@ const Proyecto: React.FC<Props> = ({ trabajo }) => {
     >
       <CenterContainer>
         <ProjectGrid project={trabajo} />
-        <h1>Dolar</h1>
       </CenterContainer>
     </Box>
   );
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  console.log(params?.slug);
-
   const {
     data: { trabajos },
-  } = await client.query({
-    query: gql`
-      query getTrabajo($slug: String!) {
-        trabajos(where: { Slug: $slug }) {
-          Titulo
-          Descripcion
-          Ciudad
-          M2
-          Year
-          Imagenes {
-            url
-          }
-        }
-      }
-    `,
+  } = await client.query<SingleWorkInfoData>({
+    query: GET_SINGLEWORK,
     variables: { slug: params?.slug },
   });
 
@@ -62,25 +49,19 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   };
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+export async function getStaticPaths() {
   const {
     data: { trabajos },
-  } = await client.query({
-    query: gql`
-      query getWorks {
-        trabajos {
-          Slug
-        }
-      }
-    `,
+  } = await client.query<SingleWorkInfoData>({
+    query: GET_SINGLEWORK_SLUG,
   });
 
   return {
-    paths: trabajos.map((trabajo: any) => ({
+    paths: trabajos.map((trabajo) => ({
       params: { slug: trabajo.Slug },
     })),
     fallback: false,
   };
-};
+}
 
 export default Proyecto;

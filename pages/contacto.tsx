@@ -1,6 +1,6 @@
 import React from "react";
-import { gql } from "@apollo/client";
 import client from "../apollo-client";
+import { GET_CONTACT_INFO, ContactInfo } from "../lib/index";
 
 import { Box } from "@chakra-ui/react";
 import CenterContainer from "../components/centerContainer";
@@ -8,22 +8,7 @@ import ServiceCard from "../components/serviceCard";
 
 import { motion } from "framer-motion";
 
-type Props = {
-  contact: {
-    Titulo: string;
-    Descripcion: string;
-    Email: string;
-    Telefono: string;
-    Curriculum: string;
-    Imagen: [
-      {
-        url: string;
-      }
-    ];
-  };
-};
-
-const Contact: React.FC<Props> = ({ contact }) => {
+const Contact: React.FC<ContactInfo> = ({ contacto }) => {
   return (
     <Box
       width="100%"
@@ -36,13 +21,13 @@ const Contact: React.FC<Props> = ({ contact }) => {
     >
       <CenterContainer>
         <ServiceCard
-          title={contact.Titulo}
-          description={contact.Descripcion}
-          imagePath={contact.Imagen[0].url}
+          title={contacto.Titulo}
+          description={contacto.Descripcion}
+          imagePath={contacto.Imagen[0].url}
           contact={{
-            Email: contact.Email,
-            Curriculum: contact.Curriculum,
-            Telefono: contact.Telefono,
+            Email: contacto.Email,
+            Curriculum: contacto.Curriculum,
+            Telefono: contacto.Telefono,
           }}
         />
       </CenterContainer>
@@ -51,26 +36,13 @@ const Contact: React.FC<Props> = ({ contact }) => {
 };
 
 export async function getStaticProps() {
-  const { data } = await client.query({
-    query: gql`
-      query getContact {
-        contacto {
-          Titulo
-          Descripcion
-          Email
-          Telefono
-          Curriculum
-          Imagen {
-            url
-          }
-        }
-      }
-    `,
+  const { data } = await client.query<ContactInfo>({
+    query: GET_CONTACT_INFO,
   });
 
   return {
     props: {
-      contact: data.contacto,
+      contacto: data.contacto,
     },
   };
 }

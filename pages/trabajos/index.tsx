@@ -1,29 +1,15 @@
 import React from "react";
-import { gql } from "@apollo/client";
+import { GET_WORKPREVIEW_INFO, WorkPreviewInfoData } from "../../lib";
 import client from "../../apollo-client";
 
 import { SimpleGrid, Box } from "@chakra-ui/react";
 import ProjectPreview from "../../components/projectPreview";
 import CenterContainer from "../../components/centerContainer";
 
-import { dummyProjects } from "../../data/projects";
 import { motion } from "framer-motion";
 import { stagger } from "../../animation";
 
-export interface WorkPreview {
-  Slug: string;
-  Titulo: string;
-  id: string;
-  Poster: {
-    url: string;
-  };
-}
-
-type Props = {
-  works: WorkPreview[];
-};
-
-const Projects: React.FC<Props> = ({ works }) => {
+const Projects: React.FC<WorkPreviewInfoData> = ({ trabajos }) => {
   return (
     <Box
       height="100%"
@@ -41,7 +27,7 @@ const Projects: React.FC<Props> = ({ works }) => {
           as={motion.div}
           variants={stagger}
         >
-          {works.map((work) => (
+          {trabajos.map((work) => (
             <ProjectPreview
               imgSrc={work.Poster.url}
               titulo={work.Titulo}
@@ -56,24 +42,13 @@ const Projects: React.FC<Props> = ({ works }) => {
 };
 
 export async function getStaticProps() {
-  const { data } = await client.query({
-    query: gql`
-      query getWorks {
-        trabajos {
-          id
-          Titulo
-          Slug
-          Poster {
-            url
-          }
-        }
-      }
-    `,
+  const { data } = await client.query<WorkPreviewInfoData>({
+    query: GET_WORKPREVIEW_INFO,
   });
 
   return {
     props: {
-      works: data.trabajos,
+      trabajos: data.trabajos,
     },
   };
 }
